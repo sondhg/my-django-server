@@ -46,7 +46,8 @@ class LoginView(APIView):
         response.data = {"jwt": token}
 
         return response
-    
+
+
 class UserView(APIView):
     def get(self, request):
         token = request.COOKIES.get("jwt")
@@ -63,6 +64,7 @@ class UserView(APIView):
         serializer = UserSerializer(user)
 
         return Response(serializer.data)
+
 
 class LogoutView(APIView):
     def post(self, request):

@@ -1,8 +1,7 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 # làm theo https://youtu.be/PUzgZrS_piQ?si=-sonfq6T1UNCSbrt
-
-from django.contrib.auth.models import AbstractUser
 
 
 # Create your models here.
