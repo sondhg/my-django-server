@@ -1,17 +1,17 @@
-# Test login/register/logout with [agv-project](https://github.com/sondhg/agv-project) graphical user interface using this django server
+# Use this django server in combination with [agv-project](https://github.com/sondhg/agv-project) graphical user interface
 
 ## Setting Up the Database
 
 To ensure you have the same database setup as this project, follow these steps:
 
-### Prerequisites
+### Required installations
 
-- **PostgreSQL**: Make sure PostgreSQL is installed on your machine.
-- **pgAdmin 4**: This is a web-based interface for managing PostgreSQL databases.
+- **PostgreSQL**
+- **pgAdmin 4**: Interface to interact with databases. This comes with PostgreSQL when you install it.
 
-### Steps to Set Up the Database
+### Set up PostgreSQL Database
 
-1. **Clone the Repository**:
+1. **Clone my code**:
 
    ```bash
    git clone https://github.com/sondhg/my-django-server.git
@@ -20,30 +20,36 @@ To ensure you have the same database setup as this project, follow these steps:
 
 2. **Set Up a Virtual Environment**:
 
-   - Create a virtual environment to manage your project dependencies:
+   - Create a virtual environment (named "venv") to manage Python dependency packages:
 
    ```bash
    python -m venv venv
    ```
 
-   - Activate the virtual environment:
+   - Activate the venv:
 
-     - On Windows:
+     - Windows:
 
        ```bash
        venv\Scripts\activate
        ```
 
-     - On macOS and Linux:
+     - macOS and Linux:
 
        ```bash
        source venv/bin/activate
        ```
 
-   - Install the required dependencies:
+   - Install packages:
 
    ```bash
    pip install -r requirements.txt
+   ```
+
+   - Check packages list to see if installation is successful:
+
+   ```bash
+   pip list
    ```
 
 3. **Create a New Database in PostgreSQL**:
@@ -57,47 +63,35 @@ To ensure you have the same database setup as this project, follow these steps:
    - Open the `settings.py` file in your Django project.
    - Update the `DATABASES` setting with your PostgreSQL database details:
 
+   If you don't wanna change anything, just name the database name `yt_django_auth` and keep this code:
+
    ```python
    DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "yt_django_auth",  # Name of the database you created
-        "USER": "root",  # PostgreSQL user you created
-        "PASSWORD": "rootroot",  # Password for the user
-        "HOST": "localhost",  # Or the server address
-        "PORT": "5432",  # Default PostgreSQL port
-    }
+   "default": {
+      "ENGINE": "django.db.backends.postgresql",
+      "NAME": "yt_django_auth",  # Name of the database you created
+      "USER": "root",  # PostgreSQL user you created
+      "PASSWORD": "rootroot",  # Password for the user
+      "HOST": "localhost",  # Or the server address
+      "PORT": "5432",  # Default PostgreSQL port
+   }
    }
    ```
 
 5. **Apply Migrations**:
-
-   - Run the following commands to apply migrations and set up the database schema:
 
    ```bash
    python manage.py makemigrations
    python manage.py migrate
    ```
 
-Now your database should be set up and ready to use with the Django REST framework code in this project.
+Now your database should be set up and ready to use with the Django REST Framework code.
 
-## How to run django server
+## How to run Django server
 
-To run the Django server, follow these steps:
+1. **Ensure the venv is Activated**:
 
-1. **Ensure the Virtual Environment is Activated**:
-
-   - On Windows:
-
-     ```bash
-     venv\Scripts\activate
-     ```
-
-   - On macOS and Linux:
-
-     ```bash
-     source venv/bin/activate
-     ```
+   > If you use VSCode integrated terminal, venv should already be activated.
 
 2. **Start the Django Development Server**:
 
@@ -105,8 +99,4 @@ To run the Django server, follow these steps:
    python manage.py runserver
    ```
 
-3. **Access the Server**:
-
-   Open your web browser and go to `http://127.0.0.1:8000/`.
-
-Now your backend, or Django server should be running and accessible at the specified URL. Run the frontend by following the README.md file from [agv-project](https://github.com/sondhg/agv-project) in combination with this, then you can test user authentication actions such as login, register and logout on the graphical user interface.
+Now your backend, or Django server should be running on port 8000. In combination with this, run my ReactJS frontend by following the README.md file from [agv-project](https://github.com/sondhg/agv-project). Now your fullstack application is ready.
