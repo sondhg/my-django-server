@@ -4,6 +4,7 @@ from django.db import models
 
 
 class OrderDraft(models.Model):
+    id = models.BigAutoField(primary_key=True)
     agv_id = models.IntegerField()
     order_date = models.CharField(max_length=10)
     start_time = models.CharField(max_length=8)
