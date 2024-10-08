@@ -7,8 +7,8 @@ class OrderDraft(models.Model):
     agv_id = models.IntegerField()
     order_date = models.CharField(max_length=10)
     start_time = models.CharField(max_length=8)
-    start_point = models.CharField(max_length=2)
-    end_point = models.CharField(max_length=2)
+    start_point = models.IntegerField()
+    end_point = models.IntegerField()
     load_name = models.CharField(max_length=100)
     load_amount = models.IntegerField()
 
