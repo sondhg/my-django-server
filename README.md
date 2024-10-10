@@ -7,7 +7,7 @@ To ensure you have the same database setup as this project, follow these steps:
 ### Required installations
 
 - **PostgreSQL**
-- **pgAdmin 4**: Interface to interact with databases. This comes with PostgreSQL when you install it.
+- **pgAdmin 4**: Interface to interact with databases. This already came with PostgreSQL when you install it.
 
 ### Set up PostgreSQL Database
 
@@ -42,15 +42,15 @@ To ensure you have the same database setup as this project, follow these steps:
 
    - Install packages:
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+     ```bash
+     pip install -r requirements.txt
+     ```
 
    - Check packages list to see if installation is successful:
 
-   ```bash
-   pip list
-   ```
+     ```bash
+     pip list
+     ```
 
 3. **Create a New Database in PostgreSQL**:
 
@@ -81,9 +81,12 @@ To ensure you have the same database setup as this project, follow these steps:
 5. **Apply Migrations**:
 
    ```bash
+   cd agv_backend
    python manage.py makemigrations
    python manage.py migrate
    ```
+
+   > Note: agv_backend in the `cd agv_backend` command is the parent folder that includes the manage.py file, not the child folder with the same name.
 
 Now your database should be set up and ready to use with the Django REST Framework code.
 
@@ -99,4 +102,4 @@ Now your database should be set up and ready to use with the Django REST Framewo
    python manage.py runserver
    ```
 
-Now your backend, or Django server should be running on port 8000. In combination with this, run my ReactJS frontend by following the README.md file from [agv-project](https://github.com/sondhg/agv-project). Now your fullstack application is ready.
+Now your backend, or Django server should be running on port 8000. In combination with this, run my ReactJS frontend by following the README.md file from [agv-frontend](https://github.com/sondhg/agv-frontend). Now your fullstack web app is ready.
