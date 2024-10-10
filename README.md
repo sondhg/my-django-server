@@ -1,4 +1,4 @@
-# Use this django server in combination with [agv-project](https://github.com/sondhg/agv-project) graphical user interface
+# Use this Django server in combination with [agv-frontend](https://github.com/sondhg/agv-frontend)
 
 ## Setting Up the Database
 
