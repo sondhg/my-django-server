@@ -7,10 +7,10 @@ from .serializers import OrderDraftSerializer
 
 
 class OrderDraftListCreate(generics.ListCreateAPIView):
-    queryset = OrderDraft.objects.all().order_by("id")
+    queryset = OrderDraft.objects.all().order_by('order_date', 'start_time')
     serializer_class = OrderDraftSerializer
 
 
 class OrderDraftRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
-    queryset = OrderDraft.objects.all().order_by("id")
+    queryset = OrderDraft.objects.all().order_by('order_date', 'start_time')
     serializer_class = OrderDraftSerializer
