@@ -9,7 +9,7 @@ class Order(models.Model):
     start_point = models.IntegerField()
     end_point = models.IntegerField()
     load_name = models.CharField(max_length=100)
-    load_amount = models.IntegerField()
+    load_weight = models.IntegerField()
 
     def __str__(self):
         return f"Order {self.id} for AGV {self.agv_id}"

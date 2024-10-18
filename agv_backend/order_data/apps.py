@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class RequestsManagementConfig(AppConfig):
+class OrderDataConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'requests_management'
+    name = 'order_data'
