@@ -24,7 +24,9 @@ def order_list(request):
 @api_view(["GET", "PUT", "DELETE"])
 def order_detail(request, id):
     try:
-        order = Order.objects.get(id=id)
+        order = Order.objects.get(
+            order_id=id
+        )  # ! because order_id is the primary key, use order_id=id instead of id=id
     except Order.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 

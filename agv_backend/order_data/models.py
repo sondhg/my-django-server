@@ -2,8 +2,7 @@ from django.db import models
 
 
 class Order(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    agv_id = models.IntegerField()
+    order_id = models.BigAutoField(primary_key=True)
     order_date = models.DateField()
     start_time = models.TimeField()
     start_point = models.IntegerField()
@@ -12,4 +11,4 @@ class Order(models.Model):
     load_weight = models.IntegerField()
 
     def __str__(self):
-        return f"Order {self.id} for AGV {self.agv_id}"
+        return f"Order {self.order_id} has been created"
