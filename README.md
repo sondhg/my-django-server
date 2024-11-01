@@ -103,3 +103,11 @@ Now your database should be set up and ready to use with the Django REST Framewo
    ```
 
 Now your backend, or Django server should be running on port 8000. In combination with this, run my ReactJS frontend by following the README.md file from [agv-frontend](https://github.com/sondhg/agv-frontend). Now your fullstack web app is ready.
+
+## Important notes
+
+### Database schema
+
+Each app folder in this Django project corresponds to a table in the database.
+
+![Database schema](./images/drawSQL-image-export-2024-11-01.png)
