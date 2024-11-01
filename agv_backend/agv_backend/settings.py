@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "corsheaders",
     "users",
     "order_data",
+    "agv_data",
 ]
 
 MIDDLEWARE = [
