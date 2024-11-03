@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Order(models.Model):
-    order_id = models.BigAutoField(primary_key=True)
+    order_id = models.BigIntegerField(primary_key=True)
     order_date = models.DateField()
     start_time = models.TimeField()
     start_point = models.IntegerField()

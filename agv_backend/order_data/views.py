@@ -5,7 +5,6 @@ from rest_framework.response import Response
 from .models import Order
 from .serializers import OrderSerializer
 
-
 @api_view(["GET", "POST"])
 def order_list(request):
     if request.method == "GET":
@@ -14,7 +13,13 @@ def order_list(request):
         return Response(serializer.data)
 
     elif request.method == "POST":
-        serializer = OrderSerializer(data=request.data)
+        # Check if request.data is a list (for bulk creation)
+        if isinstance(request.data, list):
+            # Set many=True to handle multiple objects
+            serializer = OrderSerializer(data=request.data, many=True)
+        else:
+            serializer = OrderSerializer(data=request.data)  # Single object
+
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
