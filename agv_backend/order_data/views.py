@@ -8,7 +8,7 @@ from .serializers import OrderSerializer
 @api_view(["GET", "POST"])
 def order_list(request):
     if request.method == "GET":
-        orders = Order.objects.all()
+        orders = Order.objects.all().order_by('order_id')  # Sort by order_id
         serializer = OrderSerializer(orders, many=True)
         return Response(serializer.data)
 
