@@ -37,21 +37,30 @@ class LoginView(APIView):
             "iat": datetime.datetime.now(datetime.timezone.utc),
         }
 
-        token = jwt.encode(payload, "secret", algorithm="HS256")
+        access_token = jwt.encode(payload, "secret", algorithm="HS256")
         # this version of PyJWT already returns a string, so no need to decode it
-        refresh_token = jwt.encode({"id": user.id, "exp": datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(days=7)}, "secret", algorithm="HS256")
+        refresh_token = jwt.encode(
+            {
+                "id": user.id,
+                "exp": datetime.datetime.now(datetime.timezone.utc)
+                + datetime.timedelta(days=7),
+            },
+            "secret",
+            algorithm="HS256",
+        )
 
         user.refresh_token = refresh_token
         user.save()
-        
+
         response = Response()
 
-        response.set_cookie(key="jwt", value=token, httponly=True)
+        response.set_cookie(key="access_token", value=access_token, httponly=True)
         response.data = {
-            "jwt": token,
+            "access_token": access_token,
             "refresh_token": refresh_token,
             "email": user.email,
-            "name": user.name  # Assuming the User model has a 'name' field
+            "name": user.name,
+            "message": "Login successful",
         }
 
         return response
@@ -59,13 +68,13 @@ class LoginView(APIView):
 
 class UserView(APIView):
     def get(self, request):
-        token = request.COOKIES.get("jwt")
+        access_token = request.COOKIES.get("access_token")
 
-        if not token:
+        if not access_token:
             raise AuthenticationFailed("Unauthenticated!")
 
         try:
-            payload = jwt.decode(token, "secret", algorithms=["HS256"])
+            payload = jwt.decode(access_token, "secret", algorithms=["HS256"])
         except jwt.ExpiredSignatureError:
             raise AuthenticationFailed("Unauthenticated!")
 
@@ -89,9 +98,7 @@ class LogoutView(APIView):
         user.save()
 
         response = Response()
-        response.delete_cookie("jwt")
-        response.data = {
-            "message": "Successfully logged out"
-        }
+        response.delete_cookie("access_token")
+        response.data = {"message": "Logged out successfully"}
 
         return response
