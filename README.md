@@ -99,7 +99,7 @@ Now your database should be set up and ready to use with the Django REST Framewo
 2. **Start the Django Development Server**:
 
    ```bash
-   python manage.py runserver
+   uvicorn agv_backend.asgi:application --host 127.0.0.1 --port 8000
    ```
 
 Now your backend, or Django server should be running on port 8000. In combination with this, run my ReactJS frontend by following the README.md file from [agv-frontend](https://github.com/sondhg/agv-frontend). Now your fullstack web app is ready.
