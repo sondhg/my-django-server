@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "users",
     "order_data",
     "agv_data",
+    "websocket_data",
 ]
 
 MIDDLEWARE = [
