@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "corsheaders",
+    "channels",
     "users",
     "order_data",
     "agv_data",
@@ -140,3 +141,12 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
 # APPEND_SLASH = False
+
+ASGI_APPLICATION = "agv_backend.asgi.application"
+
+# Channels layer configuration (using in-memory layer for simplicity)
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}
